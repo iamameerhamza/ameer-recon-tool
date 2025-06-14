@@ -43,7 +43,7 @@ A Python-based automated recon tool designed to gather information about a targe
 
 1. Clone the repo:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/iamameerhamza/ameer-recon-tool
 cd your-repo-folder
 ```
 
