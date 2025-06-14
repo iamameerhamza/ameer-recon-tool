@@ -28,13 +28,15 @@ def main():
     logger = setup_logger(logging.INFO)
 
     logger.info(f"Starting recon for domain: {domain}")
-    print(f"\nStarting recon for domain: {domain}")
+    print(f"\n[+] Starting recon for domain: {domain}\n")
 
     modules = ["whois", "dns", "subdomains", "portscan", "banner", "tech"]
-    print("Modules to run:", ", ".join(modules))
+    print("[*] Modules to run:", ", ".join(modules))
 
     # Start timestamp
     start_time = datetime.now()
+
+    os.makedirs("reports", exist_ok=True)
 
     # WHOIS
     logger.info("Running WHOIS lookup...")
@@ -74,14 +76,12 @@ def main():
 
     # End timestamp
     end_time = datetime.now()
-
-    # Write timestamp to file
     timestamp_file = os.path.join("reports", f"{domain}_timestamp.txt")
     with open(timestamp_file, "w") as tf:
         tf.write(f"Scan started at: {start_time.strftime('%Y-%m-%d %H:%M:%S')}\n")
         tf.write(f"Scan ended at:   {end_time.strftime('%Y-%m-%d %H:%M:%S')}\n")
 
-    print("\nRecon completed. Summary of results:")
+    print(f"\n[✓] Recon completed for {domain}")
     print(f"[✓] Timestamps saved to: {timestamp_file}")
 
 if __name__ == "__main__":
