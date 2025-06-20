@@ -2,13 +2,9 @@ import subprocess
 import os
 import sys
 
-# Add utils to path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-utils_path = os.path.join(current_dir, "..", "utils")
-sys.path.insert(0, utils_path)
 
-from logger import setup_logger
-from report_writer import write_report
+from utils.logger import setup_logger
+from utils.report_writer import write_report
 
 logger = setup_logger()
 
