@@ -1,0 +1,32 @@
+2025-06-21 05:08:11,922 [INFO] Running technology detection for httpbin.org...
+2025-06-21 05:08:11,923 [INFO] Executing: whatweb httpbin.org
+2025-06-21 05:08:19,934 [INFO] Technology detection completed.
+2025-06-21 05:08:19,935 [INFO] Timestamps saved at reports/httpbin.org_timestamp.txt
+2025-06-21 05:08:38,466 [INFO] Running WHOIS lookup for httpbin.org...
+2025-06-21 05:08:45,191 [INFO] WHOIS lookup completed successfully.
+2025-06-21 05:08:45,192 [INFO] Starting DNS enumeration for: httpbin.org
+2025-06-21 05:08:45,262 [INFO] A records: ['35.169.248.232', '18.209.97.55', '52.45.33.43', '34.198.95.5']
+2025-06-21 05:08:45,285 [WARNING] No AAAA records found for httpbin.org.
+2025-06-21 05:08:45,344 [WARNING] No MX records found for httpbin.org.
+2025-06-21 05:08:45,405 [INFO] NS records: ['ns-884.awsdns-46.net.', 'ns-1053.awsdns-03.org.', 'ns-173.awsdns-21.com.', 'ns-1555.awsdns-02.co.uk.']
+2025-06-21 05:08:45,470 [INFO] TXT records: ['"v=spf1 -all"']
+2025-06-21 05:08:45,471 [INFO] DNS enumeration completed successfully.
+2025-06-21 05:08:45,473 [INFO] Querying crt.sh for httpbin.org
+2025-06-21 05:08:48,396 [INFO] crt.sh found 7 unique subdomains
+2025-06-21 05:08:48,397 [INFO] Querying HackerTarget for httpbin.org
+2025-06-21 05:08:49,719 [INFO] HackerTarget found 3 subdomains
+2025-06-21 05:08:49,720 [INFO] Starting brute force on httpbin.org with 6 candidates
+2025-06-21 05:08:49,781 [INFO] Brute: www.httpbin.org → 35.169.248.232
+2025-06-21 05:08:50,720 [INFO] 3 subdomains passed DNS verification
+2025-06-21 05:08:50,721 [INFO] Starting threaded port scan for 52.45.33.43...
+2025-06-21 05:08:50,722 [INFO] Resolved 52.45.33.43 to 52.45.33.43
+2025-06-21 05:08:51,078 [INFO] Port 80 is OPEN
+2025-06-21 05:08:52,328 [INFO] Threaded port scan completed. Open ports: [80]
+2025-06-21 05:08:52,330 [INFO] Starting banner grabbing for 52.45.33.43...
+2025-06-21 05:08:52,330 [INFO] Resolved 52.45.33.43 to 52.45.33.43
+2025-06-21 05:09:00,340 [INFO] Port 80 banner: No banner obtained
+2025-06-21 05:09:00,341 [INFO] Banner grabbing completed.
+2025-06-21 05:09:00,342 [INFO] Running technology detection for httpbin.org...
+2025-06-21 05:09:00,342 [INFO] Executing: whatweb httpbin.org
+2025-06-21 05:09:14,017 [INFO] Technology detection completed.
+2025-06-21 05:09:14,018 [INFO] Timestamps saved at reports/httpbin.org_timestamp.txt

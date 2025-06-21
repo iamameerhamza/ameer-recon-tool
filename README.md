@@ -1,142 +1,135 @@
-# AmeerReconTool 
 
-A Python-based automated recon tool designed to gather information about a target domain using modules like WHOIS lookup, DNS enumeration, subdomain discovery, port scanning, banner grabbing, and technology detection.
+# 📄 **AmeerReconTool**
 
----
-
-##  Features
-
-- WHOIS lookup
-- DNS record enumeration
-- Subdomain brute-forcing
-- Port scanning (common ports)
-- Banner grabbing (basic service info)
-- Technology stack detection
-- Summary report generation
+**A modular Python reconnaissance tool for initial information gathering during penetration tests.**  
+Designed for students, interns, and red teamers to practice automated recon techniques in a structured way.
 
 ---
 
-##  Project Structure
+## 🚀 **Features**
 
-```
-.
-├── main.py                  # Main controller script
-├── generate_summary.py      # Compiles all module reports into one summary
-├── modules/                 # Recon modules
-│   ├── whois_lookup.py
-│   ├── dns_enum.py
-│   ├── subdomain_enum.py
-│   ├── port_scan.py
-│   ├── banner_grab.py
-│   └── tech_detect.py
-├── utils/
-│   ├── logger.py            # Logging setup
-│   └── report_writer.py     # Handles saving output to files
-├── reports/                 # Output files from each module
-├── requirements.txt
-└── README.md
-```
+✅ **Passive Recon**
+- WHOIS lookup  
+- DNS enumeration (A, AAAA, MX, NS, TXT records)  
+- Subdomain discovery (crt.sh, HackerTarget API, brute force + wildcard filtering)
+
+✅ **Active Recon**
+- Port scanning (multi-threaded using Python sockets)  
+- Banner grabbing (HTTP headers + raw socket banners)  
+- Technology detection (via WhatWeb)
+
+✅ **Reporting**
+- Individual `.txt` reports per module  
+- Combined `.html` summary report per target  
+
+✅ **Other**
+- Verbose, color-coded CLI output (using `colorama`)  
+- Logs saved in `logs/tool.log`  
+- Flexible command-line flags for modular execution  
 
 ---
 
-## Installation
+## 🛠 **Installation**
 
-1. Clone the repo:
+1️⃣ Clone the repository:
 ```bash
-git clone https://github.com/iamameerhamza/ameer-recon-tool
+git clone https://github.com/yourusername/ameer-recon-tool.git
 cd ameer-recon-tool
 ```
 
-2. Install required packages:
+2️⃣ Install required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+➡ **Requires:** Python 3.8+
+
+➡ For technology detection, ensure `whatweb` is installed and in your system’s PATH:
+```bash
+sudo apt install whatweb  # Debian/Ubuntu
+```
 
 ---
 
-##  Usage
+## ⚡ **Usage**
 
-### Run recon on a domain:
+Run all modules:
 ```bash
 python3 main.py --domain example.com
 ```
 
-This will run all modules in sequence and save the results in the `reports/` folder.
-
-### Generate a final summary report:
+Run selected modules:
 ```bash
-python3 generate_summary.py --domain example.com
+python3 main.py --domain example.com --whois --dns --subdomains --portscan --banner --tech
 ```
 
-This will create `final_report_example.com.txt` with all findings.
+| Flag           | Description               |
+|----------------|---------------------------|
+| `--domain`      | Target domain (required)   |
+| `--whois`       | Run WHOIS lookup           |
+| `--dns`         | Run DNS enumeration        |
+| `--subdomains`  | Run subdomain enumeration  |
+| `--portscan`    | Run port scanning          |
+| `--banner`      | Run banner grabbing        |
+| `--tech`        | Run technology detection   |
+| `--verbose`     | Enable detailed logging    |
+| `--no-html`     | Skip HTML report generation |
 
 ---
 
-## Modules Description
+## 📂 **Output**
 
-| Module         | Description                                         |
-|----------------|-----------------------------------------------------|
-| WHOIS Lookup   | Fetches domain registration details                 |
-| DNS Enum       | Retrieves DNS records (A, MX, NS, TXT)              |
-| Subdomain Enum | Discovers subdomains using a wordlist               |
-| Port Scan      | Scans for common open TCP ports                     |
-| Banner Grab    | Attempts to fetch service banners (version info)    |
-| Tech Detect    | Analyzes headers and HTML to detect technologies    |
-
----
-
-##  Output
-
-Each module saves its output in:
+Results are saved under `reports/`:
 ```
-/reports/domainname_modulename.txt
+reports/
+ ├── example.com_whois.txt
+ ├── example.com_dns.txt
+ ├── example.com_subdomains.txt
+ ├── example.com_portscan.txt
+ ├── example.com_banner.txt
+ ├── example.com_techdetect.txt
+ ├── example.com_report_YYYY-MM-DD_HH-MM-SS.html
+ └── example.com_timestamp.txt
 ```
-
-Example:
-- `httpbin.org_whois.txt`
-- `httpbin.org_portscan.txt`
-- `final_report_httpbin.org.txt`
-
----
-
-## Timestamping
-
-Each module execution includes a timestamp saved to:
+Logs:
 ```
-reports/domainname_timestamp.txt
+logs/tool.log
 ```
 
 ---
 
-##  Tested Domains
-
-- `httpbin.org`
-- `neverssl.com`
-
-Try others like:
-```bash
-python3 main.py --domain example.com
+## 📁 **Directory Structure**
+```
+ameer-recon-tool/
+├── main.py
+├── generate_summary.py
+├── requirements.txt
+├── README.md
+├── utils/
+│   ├── logger.py
+│   ├── report_writer.py
+│   └── html_report_writer.py
+├── modules/
+│   ├── passive/
+│   │   ├── whois_lookup.py
+│   │   ├── dns_enum.py
+│   │   └── subdomain_enum.py
+│   └── active/
+│       ├── port_scan.py
+│       ├── banner_grab.py
+│       └── tech_detect.py
+├── reports/
+├── logs/
+└── wordlists/ (optional)
 ```
 
 ---
 
-##  Notes
-
-- Timeout errors may appear for ports that don’t respond — this is expected.
-- Summary file will overwrite if you regenerate it for the same domain.
-
----
-
-##  Submission
-
-To submit:
-1. Delete any unused test scripts (like `test1.py`, `test.py`)
-2. Run a final clean test
-3. Zip the full project:
-```bash
-zip -r ameer_recon_tool.zip .
-```
+## ⚠ **Disclaimer**
+> 🛡 **For educational use and authorized testing only.**  
+> Do not use this tool against systems without explicit permission.
 
 ---
 
-Created with ❤️ by Ameer
+## 🙌 **Credits**
+Created with ❤️ by **Ameer Hamza**  
+*Part of internship red team project*
