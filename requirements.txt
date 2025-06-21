@@ -2,7 +2,4 @@ requests>=2.31.0
 colorama>=0.4.6
 dnspython>=2.3.0
 python-whois>=0.7.3
-<<<<<<< HEAD
-=======
 
->>>>>>> 031c8c1bf3a32b1007bc0c9235831d8dfed1539a
